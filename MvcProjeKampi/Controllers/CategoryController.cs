@@ -22,6 +22,13 @@ namespace MvcProjeKampi.Controllers
             return View(categoryValues);
         }
 
+        [HttpGet]
+        public ActionResult AddCategory()
+		{
+            return View();
+		}
+
+        [HttpPost]
         public ActionResult AddCategory(Category p)
         {
             cm.CategoryAddBL(p);

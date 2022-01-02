@@ -61,9 +61,9 @@
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
-    <Compile Include="Migrations\202111051144181_mig1.cs" />
-    <Compile Include="Migrations\202111051144181_mig1.designer.cs">
-      <DependentUpon>202111051144181_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\202112181153279_CreateAboutsTable.cs" />
+    <Compile Include="Migrations\202112181153279_CreateAboutsTable.designer.cs">
+      <DependentUpon>202112181153279_CreateAboutsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,8 +79,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111051144181_mig1.resx">
-      <DependentUpon>202111051144181_mig1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112181153279_CreateAboutsTable.resx">
+      <DependentUpon>202112181153279_CreateAboutsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
