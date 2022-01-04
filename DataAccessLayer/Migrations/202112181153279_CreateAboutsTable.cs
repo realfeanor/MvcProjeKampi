@@ -18,6 +18,7 @@
                         AboutImage2 = c.String(maxLength: 100),
                     })
                 .PrimaryKey(t => t.AboutID);
+           
         }
         
         public override void Down()
