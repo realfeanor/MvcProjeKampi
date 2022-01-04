@@ -20,15 +20,15 @@ namespace BusinessLayer.Concrete
         {
             repo.Insert(p);
 
-            //if(p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription =="" || p.CategoryName.Length >= 51)
-            //{
-            //    //hata mesajı
-            //}
+            if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
+            {
+                //hata mesajı
+            }
 
-            //else
-            //{
-            //    repo.Insert(p);
-            //}
+            else
+            {
+                repo.Insert(p);
+            }
         }
     }
 }
