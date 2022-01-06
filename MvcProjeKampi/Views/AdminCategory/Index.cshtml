@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <br />
 <table class="table table-bordered">
     <tr>
@@ -19,9 +20,9 @@
         <tr>
             <th>@item.CategoryID</th>
             <td>@item.CategoryName</td>
-            <td><a href="#" class="btn-danger">Sil</a></td>
-            <td><a href="#" class="btn-warning">Güncelle</a></td>
-            <td><a href="#" class="btn-primary">Başlıklar</a></td>
+            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="#" class="btn btn-primary">Başlıklar</a></td>
         </tr>
     }
 </table>
