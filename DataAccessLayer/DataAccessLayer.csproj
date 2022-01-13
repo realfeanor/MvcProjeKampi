@@ -75,6 +75,14 @@
     <Compile Include="Migrations\202201110652047_mig_writertitle_add.designer.cs">
       <DependentUpon>202201110652047_mig_writertitle_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201130831046_writer_image_length_250_from_100.cs" />
+    <Compile Include="Migrations\202201130831046_writer_image_length_250_from_100.designer.cs">
+      <DependentUpon>202201130831046_writer_image_length_250_from_100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201130900284_new_column_writerstatus.cs" />
+    <Compile Include="Migrations\202201130900284_new_column_writerstatus.designer.cs">
+      <DependentUpon>202201130900284_new_column_writerstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201110652047_mig_writertitle_add.resx">
       <DependentUpon>202201110652047_mig_writertitle_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201130831046_writer_image_length_250_from_100.resx">
+      <DependentUpon>202201130831046_writer_image_length_250_from_100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201130900284_new_column_writerstatus.resx">
+      <DependentUpon>202201130900284_new_column_writerstatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
