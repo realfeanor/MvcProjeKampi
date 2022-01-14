@@ -83,6 +83,14 @@
     <Compile Include="Migrations\202201130900284_new_column_writerstatus.designer.cs">
       <DependentUpon>202201130900284_new_column_writerstatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201140759164_added_content_status_column.cs" />
+    <Compile Include="Migrations\202201140759164_added_content_status_column.designer.cs">
+      <DependentUpon>202201140759164_added_content_status_column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201140808571_added_heading_status_column.cs" />
+    <Compile Include="Migrations\202201140808571_added_heading_status_column.designer.cs">
+      <DependentUpon>202201140808571_added_heading_status_column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201130900284_new_column_writerstatus.resx">
       <DependentUpon>202201130900284_new_column_writerstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201140759164_added_content_status_column.resx">
+      <DependentUpon>202201140759164_added_content_status_column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201140808571_added_heading_status_column.resx">
+      <DependentUpon>202201140808571_added_heading_status_column.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
