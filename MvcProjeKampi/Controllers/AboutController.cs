@@ -9,18 +9,26 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
-    public class AboutController : Controller
-    {
-        AboutManager abm = new AboutManager(new EfAboutDal());
-        public ActionResult Index()
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult AddAbout(About p)
-        {
-            abm.AboutAddBL(p);
-            return RedirectToAction("Index");
-        }
-    }
+	public class AboutController : Controller
+	{
+		AboutManager abm = new AboutManager(new EfAboutDal());
+		public ActionResult Index()
+		{
+			var aboutValues = abm.GetList();
+			return View(aboutValues);
+		}
+
+		[HttpGet]
+		public ActionResult AddAbout()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddAbout(About p)
+		{
+			abm.AboutAddBL(p);
+			return RedirectToAction("Index");
+		}
+	}
 }

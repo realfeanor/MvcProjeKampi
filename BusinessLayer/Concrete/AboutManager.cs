@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public void AboutAddBL(About about)
         {
-            throw new NotImplementedException();
+            _aboutDal.Insert(about);
         }
 
         public void AboutDeleteBL(About about)
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<About> GetList()
         {
-            throw new NotImplementedException();
+            return _aboutDal.List();
         }
     }
 }
