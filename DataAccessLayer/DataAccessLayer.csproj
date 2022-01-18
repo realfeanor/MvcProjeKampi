@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202201171016399_added_message_table1.designer.cs">
       <DependentUpon>202201171016399_added_message_table1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201181018362_added_isdraft_columnt_to_message_table.cs" />
+    <Compile Include="Migrations\202201181018362_added_isdraft_columnt_to_message_table.designer.cs">
+      <DependentUpon>202201181018362_added_isdraft_columnt_to_message_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201171016399_added_message_table1.resx">
       <DependentUpon>202201171016399_added_message_table1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201181018362_added_isdraft_columnt_to_message_table.resx">
+      <DependentUpon>202201181018362_added_isdraft_columnt_to_message_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
