@@ -33,71 +33,51 @@ namespace MvcProjeKampi.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewMessage(Message p)
+        public ActionResult NewMessage(Message message, string buttons)
         {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult NewDraft()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult NewDraft(Message p)
-        {
-            //p.IsDraft = true;
-            //mm.MessageAddBL(p);
-
-            //return RedirectToAction("Index");
-
-            //MessageValidator messageValidator = new MessageValidator();
-            //ValidationResult results = messageValidator.Validate(message);
+            MessageValidator messageValidator = new MessageValidator();
+            ValidationResult results = messageValidator.Validate(message);
             //HttpUtility utility = new HttpUtility();
+            
+            if (results.IsValid)
+            {
+                if (buttons == "send")
+                {
+                    message.SenderMail = "admin@gmail.com";
+                    message.IsDraft = false;
+                    message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    mm.MessageAddBL(message);
+                    return RedirectToAction("Sendbox");
 
+                }
+                else if (buttons == "draft")
+                {
+                    message.SenderMail = "admin@gmail.com";
+                    message.IsDraft = true;
+                    message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
 
+                    //MvcHtmlString data = MvcHtmlString.Create( message.MessageContent);
 
-            //if (results.IsValid)
-            //{
-            //    if (buttons == "send")
-            //    {
-            //        message.SenderMail = "admin@gmail.com";
-            //        message.isDraft = false;
-            //        message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //        mm.MessageAddBl(message);
-            //        return RedirectToAction("Sendbox");
+                    //message.MessageContent = data.ToString();
 
-            //    }
-            //    else if (buttons == "draft")
-            //    {
-            //        message.SenderMail = "admin@gmail.com";
-            //        message.isDraft = true;
-            //        message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    string data = Server.HtmlEncode(message.MessageContent);
+                    message.MessageContent = data;
 
-            //        //MvcHtmlString data = MvcHtmlString.Create( message.MessageContent);
+                    mm.MessageAddBL(message);
+                    //return RedirectToAction("DraftList");
+                    return RedirectToAction("Sendbox");
+                }
+            }
 
-            //        //message.MessageContent = data.ToString();
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
 
-
-            //        string data = Server.HtmlEncode(message.MessageContent);
-            //        message.MessageContent = data;
-
-
-            //        mm.MessageAddBl(message);
-            //        return RedirectToAction("DraftList");
-
-            //    }
-            //}
-
-            //else
-            //{
-            //    foreach (var item in results.Errors)
-            //    {
-            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-            //    }
-            //}
-            //return View();
         }
     }
 }
