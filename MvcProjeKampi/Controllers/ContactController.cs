@@ -37,6 +37,9 @@ namespace MvcProjeKampi.Controllers
             var messagecount = mm.GetListSendbox();
             ViewBag.sendvalue = messagecount.Count();
 
+            var draftCount = mm.GetListDrafts();
+            ViewBag.draft = draftCount.Count();
+
             //var draftValue = mm.GetAllDraft();
             //ViewBag.draftValue = draftValue.Count();
 

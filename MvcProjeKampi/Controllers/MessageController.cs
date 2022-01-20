@@ -14,6 +14,7 @@ namespace MvcProjeKampi.Controllers
     public class MessageController : Controller
     {
         MessageManager mm = new MessageManager(new EfMessageDal());
+        MessageValidator messageValidator = new MessageValidator();
         public ActionResult Inbox()
         {
             var messageListInbox = mm.GetListInbox();
@@ -26,6 +27,18 @@ namespace MvcProjeKampi.Controllers
             return View(messageListSendbox);
         }
 
+        public ActionResult GetInBoxMessageDetails(int id)
+        {
+            var values = mm.GetByID(id);
+            return View(values);
+        }
+
+        public ActionResult GetSendBoxMessageDetails(int id)
+        {
+            var values = mm.GetByID(id);
+            return View(values);
+        }
+
         [HttpGet]
         public ActionResult NewMessage()
         {
@@ -35,7 +48,6 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message, string buttons)
         {
-            MessageValidator messageValidator = new MessageValidator();
             ValidationResult results = messageValidator.Validate(message);
             //HttpUtility utility = new HttpUtility();
             
@@ -65,7 +77,7 @@ namespace MvcProjeKampi.Controllers
 
                     mm.MessageAddBL(message);
                     //return RedirectToAction("DraftList");
-                    return RedirectToAction("Sendbox");
+                    return RedirectToAction("DraftBox");
                 }
             }
 
@@ -77,7 +89,12 @@ namespace MvcProjeKampi.Controllers
                 }
             }
             return View();
+        }
 
+        public ActionResult DraftBox()
+        {
+            var drafts = mm.GetListDrafts();
+            return View(drafts);
         }
     }
 }

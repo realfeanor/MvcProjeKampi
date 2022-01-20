@@ -105,6 +105,10 @@
     <Compile Include="Migrations\202201181018362_added_isdraft_columnt_to_message_table.designer.cs">
       <DependentUpon>202201181018362_added_isdraft_columnt_to_message_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201201032306_added_contact_date_column.cs" />
+    <Compile Include="Migrations\202201201032306_added_contact_date_column.designer.cs">
+      <DependentUpon>202201201032306_added_contact_date_column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201181018362_added_isdraft_columnt_to_message_table.resx">
       <DependentUpon>202201181018362_added_isdraft_columnt_to_message_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201201032306_added_contact_date_column.resx">
+      <DependentUpon>202201201032306_added_contact_date_column.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
