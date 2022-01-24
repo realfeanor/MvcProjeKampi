@@ -15,6 +15,8 @@ namespace MvcProjeKampi.Controllers
     {
         MessageManager mm = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
+
+        [Authorize]
         public ActionResult Inbox()
         {
             var messageListInbox = mm.GetListInbox();
@@ -50,7 +52,7 @@ namespace MvcProjeKampi.Controllers
         {
             ValidationResult results = messageValidator.Validate(message);
             //HttpUtility utility = new HttpUtility();
-            
+
             if (results.IsValid)
             {
                 if (buttons == "send")
