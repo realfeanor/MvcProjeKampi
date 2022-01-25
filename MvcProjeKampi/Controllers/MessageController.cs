@@ -20,6 +20,10 @@ namespace MvcProjeKampi.Controllers
         public ActionResult Inbox()
         {
             var messageListInbox = mm.GetListInbox();
+
+            var messageList = mm.GetListInbox();
+            ViewBag.receiver = messageList.Count();
+
             return View(messageListInbox);
         }
 
@@ -32,6 +36,12 @@ namespace MvcProjeKampi.Controllers
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var values = mm.GetByID(id);
+
+            if (values.IsRead == false)
+                values.IsRead = true;
+
+            mm.MessageUpdateBL(values);
+
             return View(values);
         }
 

@@ -31,8 +31,10 @@ namespace MvcProjeKampi.Controllers
             var contactValues = cm.GetList();
             ViewBag.contact = contactValues.Count();
 
-            var messageList = mm.GetListInbox();
-            ViewBag.receiver = messageList.Count();
+            //var messageList = mm.GetListInbox();
+            //ViewBag.receiver = messageList.Count();
+
+            ViewBag.unreadMessages = mm.GetUnreadMessagesInbox();
 
             var messagecount = mm.GetListSendbox();
             ViewBag.sendvalue = messagecount.Count();

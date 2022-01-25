@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace MvcProjeKampi.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        LoginManager lm = new LoginManager(new EfLoginDal());
 
         [HttpGet]
         public ActionResult Index()
@@ -22,20 +24,31 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult Index(Admin p)
         {
-            Context c = new Context();
-            var adminUserInfo = c.Admins.FirstOrDefault(x => x.AdminUserName == p.AdminUserName && x.AdminPassword == p.AdminPassword);
+            //Context c = new Context();
+            //var adminUserInfo = c.Admins.FirstOrDefault(x => x.AdminUserName == p.AdminUserName && x.AdminPassword == p.AdminPassword);
 
-            if (adminUserInfo != null)
+            //if (adminUserInfo != null)
+            //{
+            //    FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);
+            //    Session["AdminUserName"] = adminUserInfo.AdminUserName;
+            //    return RedirectToAction("Index", "AdminCategory");
+            //}
+
+            //else
+            //{
+            //    return RedirectToAction("Index");
+            //}
+
+            if (lm.IsAdmin(p.AdminUserName, p.AdminPassword))
             {
-                FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);
-                Session["AdminUserName"] = adminUserInfo.AdminUserName;
+                FormsAuthentication.SetAuthCookie(p.AdminUserName, false);
+                Session["AdminUserName"] = p.AdminUserName;
                 return RedirectToAction("Index", "AdminCategory");
             }
 
-            else
-            {
-                return RedirectToAction("Index");
-            }
+            //ModelState.AddModelError("LogOnError", "The user name or password provided is incorrect.");
+            TempData["Message"] = "Kullanıcı adı veya parola yanlış.";
+            return RedirectToAction("Index");
         }
     }
 }
