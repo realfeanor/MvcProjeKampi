@@ -13,7 +13,8 @@ namespace MvcProjeKampi.Controllers
 {
     public class LoginController : Controller
     {
-        LoginManager lm = new LoginManager(new EfLoginDal());
+        AdminLoginManager lm = new AdminLoginManager(new EfAdminLoginDal());
+        WriterLoginManager wlm = new WriterLoginManager(new EfWriterLoginDal());
 
         [HttpGet]
         public ActionResult Index()
@@ -49,6 +50,27 @@ namespace MvcProjeKampi.Controllers
             //ModelState.AddModelError("LogOnError", "The user name or password provided is incorrect.");
             TempData["Message"] = "Kullanıcı adı veya parola yanlış.";
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriterLogin(Writer p)
+        {
+            if (wlm.IsUser(p.WriterMail, p.WriterPassword))
+            {
+                FormsAuthentication.SetAuthCookie(p.WriterMail, false);
+                Session["WriterMail"] = p.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+
+            //ModelState.AddModelError("LogOnError", "The user name or password provided is incorrect.");
+            TempData["Message"] = "Kullanıcı adı veya parola yanlış.";
+            return RedirectToAction("WriterLogin");
         }
     }
 }

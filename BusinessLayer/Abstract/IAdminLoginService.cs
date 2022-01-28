@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ILoginService
+    public interface IAdminLoginService
     {
         bool IsAdmin(string userName, string password);
-
-        bool IsUser(string userName, string password);
     }
 }

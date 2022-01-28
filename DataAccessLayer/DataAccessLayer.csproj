@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAboutDal.cs" />
-    <Compile Include="Abstract\ILoginDal.cs" />
+    <Compile Include="Abstract\IAdminLoginDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
@@ -62,11 +62,12 @@
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IRoleDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
+    <Compile Include="Abstract\IWriterLoginDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
-    <Compile Include="EntityFramework\EfLoginDal.cs" />
+    <Compile Include="EntityFramework\EfAdminLoginDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfRoleDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
+    <Compile Include="EntityFramework\EfWriterLoginDal.cs" />
     <Compile Include="Migrations\202201070821280_WriterTableEdit.cs" />
     <Compile Include="Migrations\202201070821280_WriterTableEdit.designer.cs">
       <DependentUpon>202201070821280_WriterTableEdit.cs</DependentUpon>

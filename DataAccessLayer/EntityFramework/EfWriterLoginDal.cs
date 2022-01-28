@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfLoginDal : GenericRepository<Admin>, ILoginDal
+    public class EfWriterLoginDal : GenericRepository<Writer>, IWriterLoginDal
     {
     }
 }

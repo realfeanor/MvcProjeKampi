@@ -108,5 +108,7 @@ namespace MvcProjeKampi.Controllers
             var drafts = mm.GetListDrafts();
             return View(drafts);
         }
+
+
     }
 }

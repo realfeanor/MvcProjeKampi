@@ -8,28 +8,23 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class LoginManager : ILoginService
+    public class AdminLoginManager : IAdminLoginService
     {
-        ILoginDal _loginDal;
+        IAdminLoginDal _adminLoginDal;
 
-        public LoginManager(ILoginDal loginDal)
+        public AdminLoginManager(IAdminLoginDal adminLoginDal)
         {
-            _loginDal = loginDal;
+            _adminLoginDal = adminLoginDal;
         }
 
         public bool IsAdmin(string userName, string password)
         {
-            var admin = _loginDal.Get(x => x.AdminUserName == userName && x.AdminPassword == password);
+            var admin = _adminLoginDal.Get(x => x.AdminUserName == userName && x.AdminPassword == password);
 
             if (admin != null)
                 return true;
 
             return false;
-        }
-
-        public bool IsUser(string userName, string password)
-        {
-            throw new NotImplementedException();
         }
     }
 }
