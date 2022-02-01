@@ -13,6 +13,7 @@ namespace BusinessLayer.Concrete
     {
         IContentDal _contentDal;
 
+        
         public ContentManager(IContentDal contentDal)
         {
             _contentDal = contentDal;
@@ -27,6 +28,7 @@ namespace BusinessLayer.Concrete
             _contentDal.Delete(content);
         }
 
+        []
         public void ContentUpdateBL(Content content)
         {
             _contentDal.Update(content);

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -14,15 +15,18 @@ namespace MvcProjeKampi.Controllers
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
+        Context c = new Context(); // 1.
+        int writerIdInfo;
         public ActionResult WriterProfile()
         {
             return View();
         }
 
-        public ActionResult MyHeading()
+        public ActionResult MyHeading(string p)
         {
-            //id = 1;
-            var values = hm.GetListByWriter();
+            p = (string)Session["WriterMail"]; // 2. 
+            writerIdInfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault(); // 3. Birinci, ikinci ve üçüncü satır solide uyuyor mu? Düzeltilebilir mi?
+            var values = hm.GetListByWriter(writerIdInfo);
             return View(values);
         }
 
@@ -43,9 +47,11 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading p)
         {
-            //p.HeadingDate = DateTime.Now;
+            string writerMailInfo = (string)Session["WriterMail"];
+            writerIdInfo = c.Writers.Where(x => x.WriterMail == writerMailInfo).Select(y => y.WriterID).FirstOrDefault(); // 3. Birinci, ikinci ve üçüncü satır solide uyuyor mu? Düzeltilebilir mi?
+            ViewBag.d = writerIdInfo;
             p.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            p.WriterID = 1;
+            p.WriterID = writerIdInfo;
             p.HeadingStatus = true;
             hm.HeadingAdd(p);
             return RedirectToAction("MyHeading");

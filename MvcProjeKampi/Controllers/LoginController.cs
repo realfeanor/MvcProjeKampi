@@ -11,6 +11,7 @@ using System.Web.Security;
 
 namespace MvcProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminLoginManager lm = new AdminLoginManager(new EfAdminLoginDal());
